@@ -11,18 +11,20 @@ $(document).ready(function() {
     var el_story = $('#story p');
     var el_title = $('#story h2');
 
+    block();
+
     function unblock()
     {
         log('unblocking');
         blocked = false;
-        el_button.css('cursor', 'pointer');
+        el_button.fadeTo('fast', 1.0);
     }
 
     function block()
     {
         log('blocking');
         blocked = true;
-        el_button.css('cursor', 'progress');
+        el_button.fadeTo('fast', 0.4);
     }
 
     function show_story()

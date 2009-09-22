@@ -56,6 +56,7 @@ h1 {
 
 #button {
     background: transparent url(images/button.png) 50% 50% no-repeat;
+    cursor: pointer;
     height: 140px;
     margin: 0 auto 1.5em;
     width: 200px;
