@@ -68,6 +68,10 @@ h1 {
     text-align: center;
 }
 
+#footer p {
+    margin-bottom: 0.8em;
+}
+
 hr {
     background: transparent url(images/hr.png) 50% 50% no-repeat;
     border: 0;
@@ -88,6 +92,7 @@ abbr {
 a:link, a:visited {
     border-bottom: 1px solid #928d7a;
     color: #21201b;
+    font-variant: small-caps;
     text-decoration: none;
 }
 
