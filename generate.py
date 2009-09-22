@@ -15,7 +15,7 @@ def word(part):
 
 def story():
     string = u"In %s %s, a young %s stumbles across %s which spurs him "\
-             u"into conflict with %s with the help of %s and her %s, "\
+             u"into conflict with %s, with the help of %s and her %s, "\
              u"culminating in %s."
 
     return string % (indefinite(word('location_adj')),
