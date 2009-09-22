@@ -1,0 +1,97 @@
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, b, cite, code,
+del, dfn, em, i, img, ins, kbd, q, samp,
+strike, strong, sub, sup, tt, var,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td
+    {margin:0; padding:0; border:0; outline:0; font-size:100%;
+     vertical-align:baseline; background:transparent;}
+html {font-size:100.01%;}
+caption, cite, code, dfn, th, var {font-style:normal; font-weight:normal;}
+h1, h2, h3, h4, h5, h6 {font-weight:normal;}
+blockquote, q {quotes:none;}
+blockquote:before, blockquote:after, q:before, q:after {content:''; content:none;}
+:focus {outline:0;}
+ins {text-decoration:underline;}
+del {text-decoration:line-through;}
+table {border-collapse:collapse; border-spacing:0;} /* still needs cellspacing="0" */
+
+body {
+    background: #ddd4b8;
+    color: #000;
+    font: 12pt/1.5 'Georgia', serif;
+    padding: 1.5em;
+}
+
+#body {
+    min-width: 536px;
+}
+
+h1 {
+    background: transparent url(images/logo.png) 50% 0 no-repeat;
+    height: 0;
+    overflow: hidden;
+    padding-top: 400px;
+}
+
+#story h2 {
+    font-size: 1.25em;
+    font-style: italic;
+    margin: 1.2em 0;
+    text-align: center;
+}
+
+#story h2 i {
+    font-style: normal;
+    padding-left: 2pt;
+}
+
+#story p {
+    margin: 1.5em auto;
+    max-width: 28em;
+    text-align: justify;
+}
+
+#button {
+    background: transparent url(images/button.png) 50% 50% no-repeat;
+    height: 140px;
+    margin: 0 auto 1.5em;
+    width: 200px;
+}
+
+#footer {
+    font-size: 0.9em;
+    margin: 0 auto;
+    max-width: 30em;
+    text-align: center;
+}
+
+hr {
+    background: transparent url(images/hr.png) 50% 50% no-repeat;
+    border: 0;
+    height: 4.5em;
+}
+
+abbr {
+    font-size: 0.9em;
+    letter-spacing: 1pt;
+    line-height: 1;
+}
+
+.amp {
+    font-family: 'Baskerville', 'Palatino', 'Palatino Linotype', serif;
+    font-style: italic;
+}
+
+a:link, a:visited {
+    border-bottom: 1px solid #928d7a;
+    color: #21201b;
+    text-decoration: none;
+}
+
+a:hover, a:active {
+    border-bottom-color: #58554a;
+    color: #000;
+}

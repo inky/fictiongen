@@ -5,11 +5,11 @@ log('magic.js');
 $(document).ready(function() {
     var stories = new Array();
     var blocked = true;
-    var max = 2;
+    var amount = 1;
 
     var el_button = $('#button');
-    var el_story = $('#story-text');
-    var el_title = $('#story-title');
+    var el_story = $('#story p');
+    var el_title = $('#story h2');
 
     function unblock()
     {
@@ -38,10 +38,10 @@ $(document).ready(function() {
         }
     }
 
-    function fetch_more()
+    function fetch_stories()
     {
         log('fetching');
-        url = '/stories.json?stories=' + max + '&ts=' + new Date().getTime();
+        url = '/stories.json?stories=' + amount + '&ts=' + new Date().getTime();
         $.getJSON(url, function(data) {
             log('done fetching');
             $.each(data, function(i, story) {
@@ -51,7 +51,7 @@ $(document).ready(function() {
             log('stories: ' + stories.length);
             show_story();
         });
-        if (max < 32) max += max;
+        if (amount < 32) amount += amount;
     }
 
     function new_story()
@@ -68,7 +68,7 @@ $(document).ready(function() {
         if (stories.length > 0) {
             show_story();
         } else {
-            fetch_more();
+            fetch_stories();
         }
     }
 
@@ -77,6 +77,5 @@ $(document).ready(function() {
         new_story();
     });
 
-    unblock();
-    log('done');
+    fetch_stories();
 });

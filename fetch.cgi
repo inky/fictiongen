@@ -21,9 +21,10 @@ def safe_int(value):
     return result
 
 def story():
+    text = '&nbsp;'.join(generate.story().rsplit(' ', 1))
     return {
-        'story': generate.story(),
-        'title': generate.title()
+        'story': text,
+        'title': generate.title(),
     }
 
 def get(stories):
