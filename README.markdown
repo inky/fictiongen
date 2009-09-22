@@ -7,6 +7,6 @@ A **[working model](http://fictiongen.boxofjunk.ws/)** of Wondermark's
 
 ----
 
-Code & design (c) 2009 [Liam Cooke](http://github.com/inky)
+Code & design &copy; 2009 [Liam Cooke](http://github.com/inky)
 
-Story content (c) 2009 [David Malki !](http://wondermark.com/)
+Story content &copy; 2009 [David Malki !](http://wondermark.com/)
