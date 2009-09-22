@@ -6,4 +6,4 @@ ServerSignature Off
 RewriteEngine On
 RewriteBase /
 RewriteRule \.py - [F,L]
-RewriteRule ^story.json$ fetch.cgi [QSA,L]
+RewriteRule ^stories.json$ fetch.cgi [QSA,L]
