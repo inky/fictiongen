@@ -1,4 +1,6 @@
-function log(text) { console.log(text); }
+function log(text) {
+    //console.log(text);
+}
 
 log('magic.js');
 
