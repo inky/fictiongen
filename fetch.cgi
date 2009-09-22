@@ -7,6 +7,8 @@ import generate
 import json
 
 
+MAX_STORIES = 64
+
 DEFAULT_HEADERS = [
     'Content-Type: application/json; charset=utf-8',
     'Cache-Control: no-cache',
@@ -28,7 +30,7 @@ def story():
     }
 
 def get(stories):
-    stories = max(1, min(safe_int(stories), 32))
+    stories = max(1, min(safe_int(stories), MAX_STORIES))
     data = [story() for _ in xrange(stories)]
     headers = ['X-Stories: %d' % stories]
     return headers, json.write(data)

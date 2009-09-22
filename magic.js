@@ -7,7 +7,7 @@ log('magic.js');
 $(document).ready(function() {
     var stories = new Array();
     var blocked = true;
-    var amount = 1;
+    var amount = 2;
 
     var el_button = $('#button');
     var el_story = $('#story p');
@@ -55,7 +55,7 @@ $(document).ready(function() {
             log('stories: ' + stories.length);
             show_story();
         });
-        if (amount < 32) amount += amount;
+        if (amount < 64) amount += amount;
     }
 
     function new_story()
