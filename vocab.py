@@ -1,5 +1,11 @@
 #!/usr/bin/env python
 # coding: utf-8
+#
+# Code (c) 2009 Liam Cooke
+# See LICENSE.txt
+#
+# Content (c) 2009 David Malki !
+# See http://wondermark.com/554/
 
 vocab = dict(
     location_adj = u"""

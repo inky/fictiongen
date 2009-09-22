@@ -1,5 +1,8 @@
 #!/usr/bin/env python
 # coding: utf-8
+#
+# Code (c) 2009 Liam Cooke
+# See LICENSE.txt
 
 from random import choice
 

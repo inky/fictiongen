@@ -1,3 +1,8 @@
+/*
+ * Code (c) 2009 Liam Cooke
+ * See LICENSE.txt
+ */
+
 function log(text) {
     //console.log(text);
 }
