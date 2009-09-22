@@ -1,0 +1,9 @@
+AddHandler fastcgi-script .py
+Options +ExecCGI -Indexes
+AddDefaultCharset utf-8
+ServerSignature Off
+
+RewriteEngine On
+RewriteBase /
+RewriteRule \.py - [F,L]
+RewriteRule ^story.json$ fetch.cgi [QSA,L]
