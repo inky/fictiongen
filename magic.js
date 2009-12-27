@@ -9,6 +9,10 @@ function log(text) {
 
 log('magic.js');
 
+if (/mobile.*safari/.test(navigator.userAgent.toLowerCase())) {
+    document.title = 'Fiction Gen.';
+}
+
 $(document).ready(function() {
     var stories = new Array();
     var blocked = true;

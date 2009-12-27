@@ -23,10 +23,12 @@ ins {text-decoration:underline;}
 del {text-decoration:line-through;}
 table {border-collapse:collapse; border-spacing:0;} /* still needs cellspacing="0" */
 
-body {
+html, body {
     background: #ddd4b8;
     color: #000;
-    font: 12pt/1.5 'Georgia', serif;
+}
+body {
+    font: 1em/1.5 'Georgia', serif;
     padding: 1.5em;
 }
 
@@ -50,7 +52,7 @@ h1 {
 
 #story h2 i {
     font-style: normal;
-    padding-left: 2pt;
+    padding-left: 0.167em;
 }
 
 #story p {
@@ -85,12 +87,12 @@ hr {
 
 abbr {
     font-size: 0.9em;
-    letter-spacing: 1pt;
+    letter-spacing: 0.08em;
     line-height: 1;
 }
 
 .amp {
-    font-family: 'Baskerville', 'Palatino', 'Palatino Linotype', serif;
+    font-family: 'Baskerville', 'Palatino', 'Palatino Linotype', 'Times New Roman', serif;
     font-style: italic;
 }
 
@@ -99,6 +101,7 @@ a:link, a:visited {
     color: #21201b;
     font-variant: small-caps;
     text-decoration: none;
+    white-space: nowrap;
 }
 
 a:hover, a:active {

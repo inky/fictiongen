@@ -1,0 +1,15 @@
+body {
+    font-size: 1.125em;
+    padding: 20px;
+    -webkit-tap-highlight-color: rgba(0,0,0, 0.0);
+    -webkit-text-size-adjust: none;
+}
+
+#footer {
+    font-size: 0.875em;
+}
+
+.amp {
+    font-family: inherit;
+    font-style: normal;
+}

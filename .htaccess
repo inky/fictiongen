@@ -1,6 +1,7 @@
-AddHandler fastcgi-script .py
-Options +ExecCGI -Indexes
 AddDefaultCharset utf-8
+AddHandler fastcgi-script .py
+AddType text/cache-manifest .manifest
+Options +ExecCGI -Indexes
 ServerSignature Off
 
 RewriteEngine On
