@@ -75,6 +75,7 @@ h1 {
 #footer {
     font-size: 0.9em;
     margin: 0 auto;
+    max-width: 40em;
     text-align: center;
 }
 

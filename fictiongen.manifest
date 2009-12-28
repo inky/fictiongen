@@ -1,16 +1,17 @@
 CACHE MANIFEST
-style.css
-images/button.png
-images/logo.png
-images/hr.png
-iphone.css
-apple-touch-icon.png
-jquery-1.3.2.min.js
-modernizr-1.1.min.js
-json2.min.js
-magic.js
-vocab.json
+
+CACHE:
+/style.css
+/images/button.png
+/images/logo.png
+/images/hr.png
+/iphone.css
+/apple-touch-icon.png
+/jquery-1.3.2.min.js
+/json2.min.js
+/magic.js
+/vocab.json
 
 NETWORK:
 
-# Mon 28 Dec 2009 12:56 GMT
+# 2009-12-28 13:50

@@ -3,14 +3,17 @@
  * See LICENSE.txt
  */
 (function () {
-    if (/mobile.*safari/.test(navigator.userAgent.toLowerCase())) {
-        document.title = 'Genre-Fiction';
-    }
+    var iPhone = /AppleWebKit.*Mobile/.test(navigator.userAgent);
+    var iPhoneApp = iPhone && !(/Mobile.*Safari/.test(navigator.userAgent));
+    if (iPhone && !iPhoneApp) document.title = 'Genre-Fiction';
+
     $(document).ready(function() {
-        var $content = $('#story'), $button = $('#button');
+        var $content = $('#story'), $button = $('#button'), $footer = $('#footer');
         $content.hide().html('<h2></h2><p></p>');
+
         var $story = $content.find('p'), $title = $content.find('h2');
         var vocab, count = new Object(), blocked = true;
+
         function unblock()
         {
             blocked = false;
@@ -66,6 +69,7 @@
                 $('body').fadeTo(750, 1.0, unblock);
             }, 100);
         }
+
         $button.click(function() {
             if (blocked) return false;
             block();
@@ -74,14 +78,21 @@
                 $content.fadeTo(500, 1.0, unblock);
             });
         });
-        try {
-            data = localStorage.getItem('vocab');
-            init(data);
-        } catch (e) {
+
+        if (!!window.localStorage) {
+            data = window.localStorage.getItem('vocab');
+            if (data) init(data);
+        }
+        if (!vocab) {
             $.get('vocab.json', function(data) {
-                try { localStorage.setItem('vocab', data); } catch (e) { }
+                if (!!window.localStorage) window.localStorage.setItem('vocab', data);
                 init(data);
             }, 'json');
+        }
+        if (iPhone && !iPhoneApp) {
+            $footer.prepend('<p>Add this app to your home screen; no internet connection needed!</p>');
+        } else if (!iPhone && !!window.applicationCache) {
+            $footer.prepend('<p>Your browser can run this generator while offline.</p>');
         }
     });
 })();
