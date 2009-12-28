@@ -1,8 +1,10 @@
 AddDefaultCharset utf-8
 AddHandler fastcgi-script .py
-AddType text/cache-manifest .manifest
 Options +ExecCGI -Indexes
 ServerSignature Off
+
+AddType application/json .json
+AddType text/cache-manifest .manifest
 
 RewriteEngine On
 RewriteBase /

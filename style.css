@@ -29,6 +29,7 @@ html, body {
 }
 body {
     font: 1em/1.5 'Georgia', serif;
+    opacity: 0.5;
     padding: 1.5em;
 }
 

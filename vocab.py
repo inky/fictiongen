@@ -144,3 +144,10 @@ vocab = dict(
 
 for part, words in vocab.items():
     vocab[part] = tuple(word.strip() for word in words.strip().split('\n'))
+
+if __name__ == '__main__':
+    import json
+    data = dict(vocab=vocab, count={})
+    for k, L in vocab.items():
+        data['count'][k] = len(L)
+    print json.dumps(data)

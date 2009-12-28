@@ -2,93 +2,64 @@
  * Code (c) 2009 Liam Cooke
  * See LICENSE.txt
  */
-
-function log(text) {
-    //console.log(text);
-}
-
-log('magic.js');
-
-if (/mobile.*safari/.test(navigator.userAgent.toLowerCase())) {
-    document.title = 'Fiction Gen.';
-}
-
-$(document).ready(function() {
-    var stories = new Array();
-    var blocked = true;
-    var amount = 2;
-
-    var el_button = $('#button');
-    var el_story = $('#story p');
-    var el_title = $('#story h2');
-
-    block();
-
-    function unblock()
-    {
-        log('unblocking');
-        blocked = false;
-        el_button.fadeTo('fast', 1.0);
+(function ($w, $d) {
+    if (/mobile.*safari/.test(navigator.userAgent.toLowerCase())) {
+        $d.title='Genre-Fiction';
     }
-
-    function block()
-    {
-        log('blocking');
-        blocked = true;
-        el_button.fadeTo('fast', 0.4);
-    }
-
-    function show_story()
-    {
-        if (stories.length > 0) {
-            story = stories.shift();
-
-            log('showing story: ' + story.title);
-
-            el_story.html(story.story);
-            el_title.html('Your title is: \u201C<i>' + story.title + '</i>\u201D');
-            setTimeout(function() { unblock(); }, 1000);
+    $d.ready(function() {
+        var vocab = new Object(), count = new Object(), blocked = true;
+        var $button = $('#button'), $story = $('#story p'), $title = $('#story h2');
+        function unblock()
+        {
+            blocked = false;
+            $button.fadeTo('fast', 1.0);
         }
-    }
-
-    function fetch_stories()
-    {
-        log('fetching');
-        url = '/stories.json?stories=' + amount + '&ts=' + new Date().getTime();
-        $.getJSON(url, function(data) {
-            log('done fetching');
-            $.each(data, function(i, story) {
-                log('  ' + story.title);
-                stories.push(story);
-            });
-            log('stories: ' + stories.length);
-            show_story();
+        function block()
+        {
+            blocked = true;
+            $button.fadeTo('fast', 0.4);
+        }
+        function indefinite(word) {
+            a = ('aeiou'.indexOf(word.charAt(0)) >= 0) ? 'an' : 'a';
+            return a + ' ' + word;
+        }
+        function word(key) {
+            return vocab[key][Math.floor(count[key] * Math.random())];
+        }
+        function story() {
+            return new Array(
+                'In', indefinite(word('location_adj')), word('location_noun') + ',',
+                'a young', word('protagonist'),
+                'stumbles across', indefinite(word('discovery')),
+                'which spurs him into conflict with', word('adversary') + ',',
+                'with the help of', indefinite(word('assistant')),
+                'and her', word('inventory') + ',',
+                'culminating in', word('conflict')
+            ).join(' ') + '.';
+        }
+        function title() {
+            var adj = word('title_adj'), noun = word('title_noun'), sep = '';
+            if (noun.charAt(0) == noun.charAt(0).toUpperCase()) {
+                sep = ' ';
+            } else if (noun == 'opolis' && /[ao]$/.test(adj)) {
+                noun = noun.substring(1);
+            }
+            return adj + sep + noun;
+        }
+        function generate() {
+            if (blocked) return false;
+            block();
+            $story.html(story());
+            $title.html('Your title is: \u201C<i>The ' + title() + '</i>\u201D');
+            setTimeout(function() { unblock(); }, 500);
+        }
+        $button.click(generate);
+        $.getJSON('vocab.json', function(data) {
+            vocab = data.vocab;
+            count = data.count;
+            blocked = false;
+            generate();
+            $('body').fadeTo(500, 1.0);
         });
-        if (amount < 64) amount += amount;
-    }
-
-    function new_story()
-    {
-        log('new story requested');
-        if (blocked) {
-            log('blocked');
-            return;
-        }
-        block();
-
-        log('stories: ' + stories.length);
-
-        if (stories.length > 0) {
-            show_story();
-        } else {
-            fetch_stories();
-        }
-    }
-
-    el_button.click(function() {
-        log('button clicked');
-        new_story();
     });
-
-    fetch_stories();
-});
+})($(window), $(document));

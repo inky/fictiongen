@@ -1,3 +1,8 @@
+/*
+ * Code (c) 2009 Liam Cooke
+ * See LICENSE.txt
+ */
+
 body {
     font-size: 1.125em;
     padding: 20px;
@@ -5,8 +10,8 @@ body {
     -webkit-text-size-adjust: none;
 }
 
-#footer {
-    font-size: 0.875em;
+#footer, hr {
+    display: none;
 }
 
 .amp {
