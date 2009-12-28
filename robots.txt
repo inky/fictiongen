@@ -1,3 +1,2 @@
 User-agent: *
 Disallow: /stories.json
-Disallow: /fetch.cgi

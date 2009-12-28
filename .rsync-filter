@@ -1,8 +1,8 @@
 - .DS_Store
 - *.swp
-- *.pyc
 
-- /.git
-- /work
-- README.markdown
+- *.py*
 - *.sh
+- /.git*
+- /work
+- /README.markdown

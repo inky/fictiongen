@@ -1,12 +1,11 @@
 AddDefaultCharset utf-8
-AddHandler fastcgi-script .py
-Options +ExecCGI -Indexes
+Options -Indexes
 ServerSignature Off
 
 AddType application/json .json
 AddType text/cache-manifest .manifest
 
-RewriteEngine On
-RewriteBase /
-RewriteRule \.py - [F,L]
-RewriteRule ^stories.json$ fetch.cgi [QSA,L]
+<FilesMatch "\.(py|sh)">
+Order Deny,Allow
+Deny from all
+</FilesMatch>
