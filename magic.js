@@ -2,38 +2,42 @@
  * Code (c) 2009 Liam Cooke
  * See LICENSE.txt
  */
-(function ($w, $d) {
+(function () {
     if (/mobile.*safari/.test(navigator.userAgent.toLowerCase())) {
-        $d.title='Genre-Fiction';
+        document.title = 'Genre-Fiction';
     }
-    $d.ready(function() {
-        var vocab = new Object(), count = new Object(), blocked = true;
-        var $button = $('#button'), $story = $('#story p'), $title = $('#story h2');
+    $(document).ready(function() {
+        var $content = $('#story'), $button = $('#button');
+        $content.hide().html('<h2></h2><p></p>');
+        var $story = $content.find('p'), $title = $content.find('h2');
+        var vocab, count = new Object(), blocked = true;
         function unblock()
         {
             blocked = false;
-            $button.fadeTo('fast', 1.0);
+            $button.stop().fadeTo('fast', 1.0);
         }
         function block()
         {
             blocked = true;
-            $button.fadeTo('fast', 0.4);
+            $button.stop().fadeTo('fast', 0.4);
         }
-        function indefinite(word) {
-            a = ('aeiou'.indexOf(word.charAt(0)) >= 0) ? 'an' : 'a';
-            return a + ' ' + word;
+        function word(key, comma) {
+            c = (comma) ? ',' : '';
+            return vocab[key][Math.floor(Math.random() * count[key])] + c;
         }
-        function word(key) {
-            return vocab[key][Math.floor(count[key] * Math.random())];
+        function indefinite(key, comma) {
+            w = word(key, comma);
+            a = (/^[aeiouAEIOU]/.test(w)) ? 'an' : 'a';
+            return a + ' ' + w;
         }
         function story() {
             return new Array(
-                'In', indefinite(word('location_adj')), word('location_noun') + ',',
+                'In', indefinite('location_adj'), word('location_noun', true),
                 'a young', word('protagonist'),
-                'stumbles across', indefinite(word('discovery')),
-                'which spurs him into conflict with', word('adversary') + ',',
-                'with the help of', indefinite(word('assistant')),
-                'and her', word('inventory') + ',',
+                'stumbles across', indefinite('discovery'),
+                'which spurs him into conflict with', word('adversary', true),
+                'with the help of', indefinite('assistant'),
+                'and her', word('inventory', true),
                 'culminating in', word('conflict')
             ).join(' ') + '.';
         }
@@ -47,19 +51,37 @@
             return adj + sep + noun;
         }
         function generate() {
-            if (blocked) return false;
-            block();
             $story.html(story());
             $title.html('Your title is: \u201C<i>The ' + title() + '</i>\u201D');
-            setTimeout(function() { unblock(); }, 500);
         }
-        $button.click(generate);
-        $.getJSON('vocab.json', function(data) {
-            vocab = data.vocab;
-            count = data.count;
+        function init(data) {
+            vocab = JSON.parse(data);
+            for (var prop in vocab) {
+                count[prop] = vocab[prop].length;
+            }
             blocked = false;
             generate();
-            $('body').fadeTo(500, 1.0);
+            setTimeout(function() {
+                $content.slideDown(750);
+                $('body').fadeTo(750, 1.0, unblock);
+            }, 100);
+        }
+        $button.click(function() {
+            if (blocked) return false;
+            block();
+            $content.stop().fadeTo(500, 0.0, function() {
+                generate();
+                $content.fadeTo(500, 1.0, unblock);
+            });
         });
+        try {
+            data = localStorage.getItem('vocab');
+            init(data);
+        } catch (e) {
+            $.get('vocab.json', function(data) {
+                try { localStorage.setItem('vocab', data); } catch (e) { }
+                init(data);
+            }, 'json');
+        }
     });
-})($(window), $(document));
+})();

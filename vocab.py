@@ -147,7 +147,4 @@ for part, words in vocab.items():
 
 if __name__ == '__main__':
     import json
-    data = dict(vocab=vocab, count={})
-    for k, L in vocab.items():
-        data['count'][k] = len(L)
-    print json.dumps(data)
+    print json.dumps(vocab)

@@ -45,7 +45,7 @@ h1 {
 }
 
 #story h2 {
-    font-size: 1.25em;
+    font-size: 1.25em;  line-height: 1.2;
     font-style: italic;
     margin: 1.2em 0;
     text-align: center;
@@ -57,8 +57,9 @@ h1 {
 }
 
 #story p {
-    margin: 1.5em auto;
+    margin: 1.5em auto 0;
     max-width: 28em;
+    min-height: 10.5em;
     text-align: justify;
 }
 
@@ -66,7 +67,8 @@ h1 {
     background: transparent url(images/button.png) 50% 50% no-repeat;
     cursor: pointer;
     height: 140px;
-    margin: 0 auto 1.5em;
+    margin: 1.5em auto;
+    opacity: 0.4;
     width: 200px;
 }
 
