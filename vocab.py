@@ -31,7 +31,7 @@ vocab = dict(
         Aztec empire
         Atlantis
         terraformed Mars
-        Antactica
+        Antarctica
         one-way spaceflight
         Outer Rim world
         set from <i>Road Warrior</i>

@@ -7,7 +7,7 @@ $(document).ready(function() {
     var iPhoneApp = iPhone && !(/Mobile.*Safari/.test(navigator.userAgent));
     if (iPhone) document.title = 'Genre-Fiction';
 
-    var count = new Object, vocab = {{{VOCAB}}};
+    var count = new Object(), vocab = {{{VOCAB}}};
     for (var prop in vocab) {
         count[prop] = vocab[prop].length;
     }
@@ -73,6 +73,7 @@ $(document).ready(function() {
 
     if (iPhone && !iPhoneApp) {
         $footer.prepend('<p>Add this app to your home screen; no internet connection needed!</p>');
+        setTimeout(function() { window.scrollTo(0, 1); }, 0);
     } else if (!iPhone && !!window.applicationCache) {
         $footer.prepend('<p>Your browser can run this generator while offline.</p>');
     }
