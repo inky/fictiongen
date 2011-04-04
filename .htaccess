@@ -9,3 +9,10 @@ AddType text/cache-manifest .manifest
 Order Deny,Allow
 Deny from all
 </FilesMatch>
+
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /
+RewriteCond %{HTTP_HOST} !^fictiongen\.inky\.me$ [NC]
+RewriteRule ^(.*)$ http://fictiongen.inky.me/$1 [R=301,QSA,L]
+</IfModule>
